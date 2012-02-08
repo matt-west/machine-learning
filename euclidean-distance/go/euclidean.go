@@ -7,8 +7,8 @@ import (
 
 type Film struct {
 	Film string
-	P1 int
-	P2 int
+	P1   int
+	P2   int
 }
 
 type Rating struct {
@@ -34,7 +34,7 @@ func euclidean_distance(prefs []Critic, p1 string, p2 string) (r float64) {
 	// Find the index of the of two critics
 	p1_index := 0
 	p2_index := 0
-	
+
 	for i := 0; i < len(prefs); i++ {
 		if prefs[i].Name == p1 {
 			p1_index = i
@@ -42,9 +42,9 @@ func euclidean_distance(prefs []Critic, p1 string, p2 string) (r float64) {
 			p2_index = i
 		}
 	}
-	
+
 	si := make([]Film, 0)
-	
+
 	for i := 0; i < len(prefs[p1_index].Ratings); i++ {
 		for i2 := 0; i2 < len(prefs[p2_index].Ratings); i2++ {
 			// If this film has been rated by both critics add it to the array of films
@@ -53,21 +53,21 @@ func euclidean_distance(prefs []Critic, p1 string, p2 string) (r float64) {
 			}
 		}
 	}
-	
+
 	// Return 0 now if there are no films that both critics have rated
 	if len(si) == 0 {
 		return 0
 	}
-	
+
 	sum_of_squares := 0.0
-	
+
 	for i := 0; i < len(si); i++ {
 		film_p1_index := si[i].P1
 		film_p2_index := si[i].P2
 		sum_of_squares += math.Pow(prefs[p1_index].Ratings[film_p1_index].Rating-prefs[p2_index].Ratings[film_p2_index].Rating, 2)
 	}
-	
-	result := 1/(1+math.Sqrt(sum_of_squares))
-	
+
+	result := 1 / (1 + math.Sqrt(sum_of_squares))
+
 	return result
 }
