@@ -71,9 +71,7 @@ def euclidean_distance(prefs, p1, p2)
   sum_of_squares = 0
   
   si.each do |item|
-    item_sum = (prefs[p1][item]-prefs[p2][item])**2
-    puts item_sum
-    sum_of_squares += item_sum
+    sum_of_squares += (prefs[p1][item]-prefs[p2][item])**2
   end
   
   return 1/(1+Math.sqrt(sum_of_squares))
