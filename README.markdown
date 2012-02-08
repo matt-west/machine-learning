@@ -4,5 +4,5 @@ This repo contains a number of machine learning algorithms in multiple language 
 
 ## Current Algorithms
 
-* Euclidean Distance Score
-* Pearson Correlation Score
+* Euclidean Distance Score (Python, Ruby and GO)
+* Pearson Correlation Score (Python and Ruby)
