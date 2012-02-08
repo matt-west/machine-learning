@@ -70,7 +70,7 @@ def euclidean_distance(prefs, p1, p2)
     return 0
   end
   
-  sum_of_squares = 0 # For the sum of all the disctances
+  sum_of_squares = 0 # For the sum of all the distances
   
   si.each do |item|
     # Calculate the distance between the two ratings in the rating graph
