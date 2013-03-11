@@ -18,23 +18,19 @@
 function pearsonCorrelation(prefs, p1, p2) {
   var si = [];
 
-  for (var i = 0; i < Object.keys(prefs[p1]).length; i++) {
-    var key = Object.keys(prefs[p1])[i];
-
-    if (Object.keys(prefs[p2]).indexOf(key) != -1) {
-      si.push(key);
-    }
+  for (var key in prefs[p1]) {
+    if (prefs[p2][key]) si.push(key);
   }
 
   var n = si.length;
 
-  if (n == 0) { return 0; }
+  if (n == 0) return 0;
 
   var sum1 = 0;
-  for (var i = 0; i < si.length; i++) { sum1 += prefs[p1][si[i]]; }
+  for (var i = 0; i < si.length; i++) sum1 += prefs[p1][si[i]];
 
   var sum2 = 0;
-  for (var i = 0; i < si.length; i++) { sum2 += prefs[p2][si[i]]; }
+  for (var i = 0; i < si.length; i++) sum2 += prefs[p2][si[i]];
 
   var sum1Sq = 0;
   for (var i = 0; i < si.length; i++) {
@@ -55,7 +51,7 @@ function pearsonCorrelation(prefs, p1, p2) {
   var den = Math.sqrt((sum1Sq - Math.pow(sum1, 2) / n) *
       (sum2Sq - Math.pow(sum2, 2) / n));
 
-  if (den == 0) { return 0; }
+  if (den == 0) return 0;
 
   return num / den;
 }

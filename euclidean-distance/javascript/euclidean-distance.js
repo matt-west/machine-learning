@@ -18,23 +18,16 @@
 function euclideanDistance(prefs, p1, p2) {
   si = [];
 
-  for (var i = 0; i < Object.keys(prefs[p1]).length; i++) {
-    key = Object.keys(prefs[p1])[i];
-
-    if (Object.keys(prefs[p2]).indexOf(key) != -1) {
-      si.push(key);
-    }
+  for (var key in prefs[p1]) {
+    if (prefs[p2][key]) si.push(key);
   }
 
-  if (si.length == 0) {
-    return 0;
-  }
+  if (si.length == 0) return 0;
 
   sum_of_squares = 0;
 
   for (var i = 0; i < si.length; i++) {
     key = si[i];
-
     sum_of_squares += Math.pow(prefs[p1][key] - prefs[p2][key], 2);
   }
 
